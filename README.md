@@ -1,21 +1,22 @@
 # CISC486-Group-7
 
-## Game Title
+## Game Title (working name) 
 **Witch Way**
 
 ---
 
 ## Core Gameplay
-The 2 players will take on the role of witches who are trying to complete their potion-making. To do this, they must collect 5 magical ingredients found in a labyrinth to put into their cauldron. 
-There will be knights patrolling the labyrinth, and they will chase the players when spotted. When a knight successfully catches up to a witch and attacks them, that witch is dead. 
-However, the other player can come revive the witch. Each witch has an ability at their disposal, and both have flying brooms that need to be recharged over time (sprinting).
+The 2 players will take on the role of witches who are trying to complete their potion-making. To do this, they must collect 5 magical ingredients found in a labyrinth to put into their cauldron.  
+There will be knights patrolling the labyrinth, and they will chase the players when spotted. When a knight successfully catches up to a witch and attacks them, that witch is dead.  
+However, the other player can come revive the witch. Each witch has an ability at their disposal, and both have flying brooms that need to be recharged over time (sprinting).  
 
 - The win condition is that the witches must collect the ingredients in sequential order and throw them into the cauldron until the potion is done, all while trying not to get caught/make contact with the knights.
 - The loss condition is that both witches are dead.
 
+---
 
 ## Game Type
-The game type will be a **Maze Chase + Puzzle Adventure** game
+The game type will be a **Maze Chase + Puzzle Adventure** game  
 
 This is because the players will perform the following:
 - Traverse a maze to collect ingredients while avoiding knights (Maze Chase)
@@ -27,7 +28,8 @@ This is because the players will perform the following:
 This will be a **2-player local coop**. 
 There will be 2 witches with distinct abilities that the players can only choose from:
 - **Fire Witch:** casts Fireball to burn plants and clear overgrown paths.
-- **Wind Witch:** casts Zephyr to push objects and reveal hidden routes.
+- **Wind Witch:** casts Zephyr to push objects and reveal hidden routes.  
+
 Both these abilities have cooldowns, so the witches must use them sparingly, either for puzzles or escape.
 
 ---
@@ -60,31 +62,25 @@ The **decision-making** is as follows:
 ## Scripted Event
 The scripted events are tied to the witches’ progress with the potion-making. 
 At specific thresholds, the knights will become harder, specifically:
-- **Ingredients 1-2:** Slightly increase detection radius and movement speed.  
-- **Ingredients 3-4:** Further increase detection radius and movement speed.  
-- **Ingredient 5:** Knights abandon patrol and **relentlessly chase** the witch carrying the final ingredient.  
+- **Ingredients 1-2:** slightly increase detection radius and movement speed.  
+- **Ingredients 3-4:** further increase detection radius and movement speed.  
+- **Ingredient 5:** all knights will abandon their patrol and relentlessly chase the witch carrying the final ingredient.  
 During the final chase, the knights can still be Stunned, but they will not enter the Reset state, creating a high-tension last push.  
-
----
-
-## Puzzle Elements
-- **Blocked Paths:** Arcane Witch must move objects to open routes.  
-- **Rune Doors:** Require both witches to activate switches together.  
-- **Guarded Corridors:** Fire Witch burns plants to clear paths.  
+(***NOTE** the fifth ingredient can only be collected once ingredients 1-4 are deposited)  
 
 ---
 
 ## Environment
-The game will take place at the witches’ dungeon, which happens to be a convoluted maze.
-In the middle of the maze is where the witches will initially spawn, including where the cauldron is located.
-There will be areas of the map that have to be opened via the witches’ abilities, where Fireball will be used for burning down plants, and Zephyr will push objects away. 
+The game will take place at the witches’ dungeon, which happens to be a convoluted maze.  
+In the middle of the maze is where the witches will initially spawn, including where the cauldron is located.  
+There will be areas of the map that have to be opened via the witches’ abilities, where Fireball will be used for burning down plants, and Zephyr will push objects away.   
 The ingredient objectives will be spawned all around the map. 
 
 ---
-## Basic Planning Factors
+# Basic Planning Factors
 
 ## Assets
-**Visual Assets:** I will be using free models found online for witches, knights, the cauldron, walls, floors, torches, herbs, crystals, etc.
+**Visual Assets:** I will be using free models found online for witches, knights, the cauldron, walls, floors, torches, herbs, crystals, etc.  
 **Audio Assets:** I will be using free sounds also found online for footsteps, ambient dungeon noise, cauldron bubbling, item collection, etc. I may also include voice acting and royalty-free music.  
 
 ## Team Information
@@ -93,4 +89,4 @@ The ingredient objectives will be spawned all around the map.
 - **ID:** 20346992  
 
 ## Team Roles
-All roles, including programming, level design, asset sourcing, and documentation, will be handled by Jay Wu.
+All roles, including programming, level designing, asset finding, and documentation, will be handled by Jay Wu.
