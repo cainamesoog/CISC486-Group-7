@@ -34,7 +34,7 @@ Both these abilities have cooldowns, so the witches must use them sparingly, eit
 
 ---
 
-## AI Enemies (NPCs) – FSM & Decision-Making
+## AI Enemies (NPCs)
 The enemies in this game will be knights sent to eliminate the witches.
 The knights' behaviours will act according to a Finite State Machine:
 The **FSM** will look like this:
