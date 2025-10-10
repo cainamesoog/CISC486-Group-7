@@ -18,7 +18,7 @@ Reset → Patrol: the knight returns to its original path to continue patrolling
 Reset → Pursuit: the knight detects a witch while it’s trying to return to its original patrol.
 
 ## Demo Video
-[Gameplay Video (YouTube)](https://www.youtube.com/watch?v=y-NWHZ0T3Ws)
+[Gameplay Video (YouTube Unlisted)](https://www.youtube.com/watch?v=y-NWHZ0T3Ws)
 
 ## Notes
 - Player and enemy represented by capsule colliders (finding a 3d model with animation is COSTLY).  

@@ -2,5 +2,5 @@
 
 ## Assignments
 
-- [Assignment 1 – Witch Way Proposal](./Assignment 1/README.md)
-- [Assignment 2 – FSM Implementation](./Assignment 2/README.md)
+- [Assignment 1 – Witch Way Proposal](https://github.com/cainamesoog/CISC486-Group-7/tree/main/Assignment%201)
+- [Assignment 2 – FSM Implementation](https://github.com/cainamesoog/CISC486-Group-7/tree/main/Assignment%202)
