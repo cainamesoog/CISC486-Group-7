@@ -3,11 +3,11 @@
 ## FSM Diagram
 ![FSM Diagram](fsm_diagram.png)
 
-## State Descriptions
-- **Patrol (Green):** The enemy follows a set path between two patrol points.
-- **Pursuit (Red):** When the player enters the detection radius, the enemy chases the player.  
-- **Attack (Black):** When close enough to the player, the enemy stops and attacks.  
-- **Reset (Blue):** If the player escapes the detection radius, the enemy returns to its patrol path.
+## States
+- **Patrol:** The enemy follows a set path between two patrol points.
+- **Pursuit:** When the player enters the detection radius, the enemy chases the player.  
+- **Attack:** When close enough to the player, the enemy stops and attacks.  
+- **Reset:** If the player escapes the detection radius, the enemy returns to its patrol path.
 
 ## Transitions
 - Patrol → Pursuit: a witch ends up in the knight’s detection radius. 
