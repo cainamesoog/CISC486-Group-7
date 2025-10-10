@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\goose\\OneDrive\\Documents\\GitHub\\CISC486-Group-7\\CISC486 Group 7\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{13EDF756-6800-4D38-F51F-C90297075D5D}|Assembly-CSharp.csproj|C:\\Users\\goose\\OneDrive\\Documents\\GitHub\\CISC486-Group-7\\CISC486 Group 7\\assets\\scripts\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13EDF756-6800-4D38-F51F-C90297075D5D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{13EDF756-6800-4D38-F51F-C90297075D5D}|Assembly-CSharp.csproj|c:\\users\\goose\\onedrive\\documents\\github\\cisc486-group-7\\cisc486 group 7\\assets\\scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{13EDF756-6800-4D38-F51F-C90297075D5D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13EDF756-6800-4D38-F51F-C90297075D5D}|Assembly-CSharp.csproj|C:\\Users\\goose\\OneDrive\\Documents\\GitHub\\CISC486-Group-7\\CISC486 Group 7\\assets\\scripts\\playercamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13EDF756-6800-4D38-F51F-C90297075D5D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13EDF756-6800-4D38-F51F-C90297075D5D}|Assembly-CSharp.csproj|C:\\Users\\goose\\OneDrive\\Documents\\GitHub\\CISC486-Group-7\\CISC486 Group 7\\assets\\scripts\\camera holder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13EDF756-6800-4D38-F51F-C90297075D5D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\camera holder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,17 +26,54 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Camera Holder.cs",
+              "DocumentMoniker": "C:\\Users\\goose\\OneDrive\\Documents\\GitHub\\CISC486-Group-7\\CISC486 Group 7\\Assets\\Scripts\\Camera Holder.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Camera Holder.cs",
+              "ToolTip": "C:\\Users\\goose\\OneDrive\\Documents\\GitHub\\CISC486-Group-7\\CISC486 Group 7\\Assets\\Scripts\\Camera Holder.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Camera Holder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T18:40:59.631Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlayerCamera.cs",
+              "DocumentMoniker": "C:\\Users\\goose\\OneDrive\\Documents\\GitHub\\CISC486-Group-7\\CISC486 Group 7\\Assets\\Scripts\\PlayerCamera.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerCamera.cs",
+              "ToolTip": "C:\\Users\\goose\\OneDrive\\Documents\\GitHub\\CISC486-Group-7\\CISC486 Group 7\\Assets\\Scripts\\PlayerCamera.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerCamera.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T18:31:05.216Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "EnemyAI.cs",
+              "DocumentMoniker": "C:\\Users\\goose\\OneDrive\\Documents\\GitHub\\CISC486-Group-7\\CISC486 Group 7\\Assets\\Scripts\\EnemyAI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyAI.cs",
+              "ToolTip": "C:\\Users\\goose\\OneDrive\\Documents\\GitHub\\CISC486-Group-7\\CISC486 Group 7\\Assets\\Scripts\\EnemyAI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\EnemyAI.cs",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAswJoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T03:58:38.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "PlayerMovement.cs",
               "DocumentMoniker": "C:\\Users\\goose\\OneDrive\\Documents\\GitHub\\CISC486-Group-7\\CISC486 Group 7\\Assets\\Scripts\\PlayerMovement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovement.cs",
               "ToolTip": "C:\\Users\\goose\\OneDrive\\Documents\\GitHub\\CISC486-Group-7\\CISC486 Group 7\\Assets\\Scripts\\PlayerMovement.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayerMovement.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAcwEMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-22T00:39:26.953Z",
               "EditorCaption": ""

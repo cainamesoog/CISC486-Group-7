@@ -1,80 +1,145 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Camera playerCamera;
-    public float walkSpeed = 6f;
-    public float runSpeed = 12f;
-    public float jumpPower = 7f;
-    public float gravity = 10f;
-    public float lookSpeed = 2f;
-    public float lookXLimit = 45f;
-    public float defaultHeight = 2f;
-    public float crouchHeight = 1f;
-    public float crouchSpeed = 3f; 
+    [Header("Movement")]
+    private float moveSpeed;
+    public float walkSpeed;
+    public float sprintSpeed;
 
-    private Vector3 moveDirection = Vector3.zero;
-    private float rotationX = 0;
-    private CharacterController characterController;
+    public float groundDrag;
 
-    private bool canMove = true;
+    public float jumpForce;
+    public float jumpCooldown;
+    public float airMultiplier;
+    bool readyToJump;
 
-    void Start()
+    [Header("Keybinds")]
+    public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode sprintKey = KeyCode.LeftShift;
+
+    [Header("Ground Check")]
+    public float playerHeight;
+    public LayerMask whatIsGround;
+    bool grounded;
+
+    public Transform orientation;
+
+    float horizontalInput;
+    float verticalInput;
+
+    Vector3 moveDirection;
+
+    Rigidbody rb;
+
+    public MovementState state;
+    public enum MovementState
     {
-        characterController = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        walking,
+        sprinting,
+        air
     }
 
-    void Update()
+    private void Start()
     {
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 right = transform.TransformDirection(Vector3.right);
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
 
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        float curSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
-        float curSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
-        float movementDirectionY = moveDirection.y;
-        moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+        readyToJump = true;
+    }
 
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+    private void Update()
+    {
+        // ground check
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
+
+        MyInput();
+        SpeedControl();
+        StateHandler();
+
+        // handle drag
+        if (grounded)
+            rb.drag = groundDrag;
+        else
+            rb.drag = 0;
+    }
+
+    private void FixedUpdate()
+    {
+        MovePlayer();
+    }
+
+    private void MyInput()
+    {
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
+
+        // when to jump
+        if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
-            moveDirection.y = jumpPower;
+            readyToJump = false;
+
+            Jump();
+
+            Invoke(nameof(ResetJump), jumpCooldown);
+        }
+    }
+
+    private void StateHandler()
+    {
+        if (grounded && Input.GetKey(sprintKey))
+        {
+            state = MovementState.sprinting;
+            moveSpeed = sprintSpeed;
+        }
+        else if (grounded)
+        {
+            state = MovementState.walking;
+            moveSpeed = walkSpeed;
         }
         else
         {
-            moveDirection.y = movementDirectionY;
+            state = MovementState.air;
         }
+    }
+    private void MovePlayer()
+    {
+        // calculate movement direction
+        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        if (!characterController.isGrounded)
+        // on ground
+        if (grounded)
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+
+        // in air
+        else if (!grounded)
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+    }
+
+    private void SpeedControl()
+    {
+        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        // limit velocity if needed
+        if (flatVel.magnitude > moveSpeed)
         {
-            moveDirection.y -= gravity * Time.deltaTime;
+            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
+    }
 
-        if (Input.GetKey(KeyCode.R) && canMove)
-        {
-            characterController.height = crouchHeight;
-            walkSpeed = crouchSpeed;
-            runSpeed = crouchSpeed;
+    private void Jump()
+    {
+        // reset y velocity
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        }
-        else
-        {
-            characterController.height = defaultHeight;
-            walkSpeed = 6f;
-            runSpeed = 12f;
-        }
-
-        characterController.Move(moveDirection * Time.deltaTime);
-
-        if (canMove)
-        {
-            rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
-            rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
-        }
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }
+    private void ResetJump()
+    {
+        readyToJump = true;
     }
 }
