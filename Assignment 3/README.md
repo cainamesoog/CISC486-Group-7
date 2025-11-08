@@ -37,7 +37,7 @@ The knight moves precisely between patrol points with no terrain clipping or sli
 ---
 
 ## Demo Video
-[Gameplay Video (YouTube Unlisted)](...)
+[Gameplay Video (YouTube Unlisted)](https://youtu.be/_T1fGakSvKU)
 
 ---
 
