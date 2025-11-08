@@ -19,3 +19,7 @@
 *.opendb
 *.VC.db
 .DS_Store
+*.vsidx
+*.db
+*.json
+*.db-wal
