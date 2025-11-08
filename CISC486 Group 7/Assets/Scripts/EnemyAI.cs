@@ -10,14 +10,15 @@ public class EnemyAI : MonoBehaviour
     public Transform[] patrolPoints;
     public Transform targetWitch;
 
-    public float detectionRadius = 5f;
-    public float attackRadius = 2f;
-    public float resetDelay = 3f;
+    public float detectionRadius = 15f;
+    public float attackRadius = 3f;
+    public float resetDelay = 2f;
     public float attackCooldown = 1.5f;
-    
+
     private float attackTimer;
     private float resetTimer;
     private int currentPatrolIndex;
+    private int patrolDirection = 1;
     private Vector3 initialPosition;
     private Renderer rend;
     private State currentState;
@@ -37,6 +38,15 @@ public class EnemyAI : MonoBehaviour
         {
             agent = GetComponent<NavMeshAgent>();
         }
+
+        if (targetWitch == null)
+            targetWitch = GameObject.FindGameObjectWithTag("Player")?.transform;
+
+        agent.stoppingDistance = 0.1f;
+        agent.autoBraking = false;
+        agent.acceleration = 30f;
+        agent.angularSpeed = 1200f;
+
         if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 5f, NavMesh.AllAreas))
         {
             transform.position = hit.position;
@@ -46,11 +56,17 @@ public class EnemyAI : MonoBehaviour
         initialPosition = transform.position;
         currentState = State.Patrol;
         GoToNextPatrolPoint();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (targetWitch == null)
+        {
+            targetWitch = GameObject.FindGameObjectWithTag("Player")?.transform;
+        }
+
         switch (currentState)
         {
             case State.Patrol:
@@ -79,7 +95,7 @@ public class EnemyAI : MonoBehaviour
         if (!agent.pathPending && agent.remainingDistance < 0.5f)
             GoToNextPatrolPoint();
 
-        // Placeholder detection logic
+        // Check detection purely via distance
         if (IsTargetInRange(detectionRadius))
         {
             ChangeState(State.Pursuit);
@@ -101,7 +117,7 @@ public class EnemyAI : MonoBehaviour
         {
             ChangeState(State.Attack);
         }
-        else if (distance > detectionRadius * 1.5f) // lost aggro
+        else if (distance > (detectionRadius * 1.25f)) // lost aggro
         {
             ChangeState(State.Reset);
         }
@@ -117,8 +133,8 @@ public class EnemyAI : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, targetWitch.position);
         agent.ResetPath();
+        agent.velocity = Vector3.zero;
 
-        // Placeholder attack logic
         attackTimer -= Time.deltaTime;
         if (attackTimer <= 0f)
         {
@@ -162,7 +178,19 @@ public class EnemyAI : MonoBehaviour
         if (patrolPoints.Length == 0) return;
 
         agent.destination = patrolPoints[currentPatrolIndex].position;
-        currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
+        initialPosition = agent.destination;
+        currentPatrolIndex += patrolDirection;
+
+        if (currentPatrolIndex >= patrolPoints.Length)
+        {
+            patrolDirection = -1;
+            currentPatrolIndex = patrolPoints.Length - 2;
+        }
+        else if (currentPatrolIndex < 0)
+        {
+            patrolDirection = 1;
+            currentPatrolIndex = 1;
+        }
     }
 
     private bool IsTargetInRange(float range)
@@ -175,27 +203,16 @@ public class EnemyAI : MonoBehaviour
     {
         if (currentState == newState) return;
 
-        Debug.Log($"Knight state changed: {currentState} -> {newState}");
+        // Debug.Log($"Knight state changed: {currentState} -> {newState}");
         currentState = newState;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-            targetWitch = other.transform;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-            targetWitch = null;
-    }
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
 
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
 }
