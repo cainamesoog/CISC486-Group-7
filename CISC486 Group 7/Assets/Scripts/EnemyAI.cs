@@ -1,9 +1,11 @@
+using PurrNet;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : NetworkIdentity
 {
     // Variables
     public NavMeshAgent agent;
@@ -62,6 +64,7 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (targetWitch == null)
         {
             targetWitch = GameObject.FindGameObjectWithTag("Player")?.transform;
