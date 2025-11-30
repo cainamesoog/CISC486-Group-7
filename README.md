@@ -2,7 +2,7 @@
 
 ## Assignments
 
-- [Assignment 1 – Witch Way Proposal](https://github.com/cainamesoog/CISC486-Group-7/tree/main/Assignment%201)
-- [Assignment 2 – FSM Implementation](https://github.com/cainamesoog/CISC486-Group-7/tree/main/Assignment%202)
-- [Assignment 3 – Decision-Making + Pathfinding](https://github.com/cainamesoog/CISC486-Group-7/tree/main/Assignment%203)
-- [Assignment 4 – Networking](https://github.com/cainamesoog/CISC486-Group-7/tree/main/Assignment%204)
+- [Assignment 1 – Witch Way Proposal](https://github.com/cainamesoog/CISC486-Group-7/tree/Networking/Assignment%201)
+- [Assignment 2 – FSM Implementation](https://github.com/cainamesoog/CISC486-Group-7/tree/Networking/Assignment%202)
+- [Assignment 3 – Decision-Making + Pathfinding](https://github.com/cainamesoog/CISC486-Group-7/tree/Networking/Assignment%203)
+- [Assignment 4 – Networking](https://github.com/cainamesoog/CISC486-Group-7/tree/Networking/Assignment%204)
