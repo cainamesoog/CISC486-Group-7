@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PurrNet;
 using TMPro;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkIdentity
 {
     [Header("Movement")]
     private float moveSpeed;
@@ -45,6 +46,13 @@ public class PlayerMovement : MonoBehaviour
         walking,
         sprinting,
         air
+    }
+
+    protected override void OnSpawned()
+    {
+        base.OnSpawned();
+
+        enabled = isOwner;
     }
 
     private void Start()
