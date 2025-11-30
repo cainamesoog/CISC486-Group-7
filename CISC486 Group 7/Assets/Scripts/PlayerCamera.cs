@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
+using PurrNet;
 
-public class PlayerCamera : MonoBehaviour
+public class PlayerCamera : NetworkIdentity
 {
     public float sensX;
     public float sensY;
@@ -11,6 +13,13 @@ public class PlayerCamera : MonoBehaviour
 
     float xRotation;
     float yRotation;
+
+    protected override void OnSpawned()
+    {
+        base.OnSpawned();
+
+        enabled = isOwner;
+    }
 
     // Start is called before the first frame update
     void Start()
